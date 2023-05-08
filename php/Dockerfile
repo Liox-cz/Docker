@@ -1,6 +1,4 @@
-ARG PHP_VERSION
-
-FROM php:${PHP_VERSION}-cli as UNIT_BUILDER
+FROM php:8.2-cli as UNIT_BUILDER
 
 ARG NGINX_UNIT_VERSION=1.29.1
 
@@ -42,7 +40,7 @@ RUN set -ex \
     && ldd /usr/sbin/unitd | awk '/=>/{print $(NF-1)}' | while read n; do dpkg-query -S $n; done | sed 's/^\([^:]\+\):.*$/\1/' | sort | uniq > /requirements.apt
 
 
-FROM php:${PHP_VERSION}-cli
+FROM php:8.2-cli
 
 ENV COMPOSER_MEMORY_LIMIT=-1 \
     COMPOSER_HOME="/.composer" \
