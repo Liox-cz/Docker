@@ -16,7 +16,7 @@
     "routes": [
         {
             "action": {
-                "share": "/app/www$uri",
+                "share": "{{DOCUMENT_ROOT}}$uri",
                 "fallback": {
                     "pass": "applications/php/index"
                 }
@@ -29,11 +29,11 @@
             "type": "php",
             "targets": {
                 "direct": {
-                    "root": "/app/www/"
+                    "root": "{{DOCUMENT_ROOT}}/"
                 },
 
                 "index": {
-                    "root": "/app/www/",
+                    "root": "{{DOCUMENT_ROOT}}/",
                     "script": "index.php"
                 }
             },

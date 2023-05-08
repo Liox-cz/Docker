@@ -2,6 +2,11 @@
 
 set -e
 
+if [ -z "${DOCUMENT_ROOT}" ]
+then
+    DOCUMENT_ROOT="/app/public"
+fi
+
 if [ -z "${PROCESSES_COUNT}" ]
 then
     PROCESSES_COUNT=10
@@ -44,6 +49,7 @@ config_tpl()
     TMP_FILE=/tmp/$(basename $1)
     cp $1 $TMP_FILE
 
+    sed -i "s|{{DOCUMENT_ROOT}}|${DOCUMENT_ROOT}|" $TMP_FILE
     sed -i "s|{{PROCESSES_COUNT}}|${PROCESSES_COUNT}|" $TMP_FILE
     sed -i "s|{{SEND_TIMEOUT}}|${SEND_TIMEOUT}|" $TMP_FILE
     sed -i "s|{{IDLE_TIMEOUT}}|${IDLE_TIMEOUT}|" $TMP_FILE

@@ -95,6 +95,8 @@ RUN chmod +x /usr/local/bin/docker-entrypoint.sh
 COPY php.ini /usr/local/etc/php/conf.d/99-php-overrides.ini
 COPY config.json.tpl /docker-entrypoint.d/config.json.tpl
 
+WORKDIR /app
+
 STOPSIGNAL SIGTERM
 
 ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
