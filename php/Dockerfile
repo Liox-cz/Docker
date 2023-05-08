@@ -97,6 +97,8 @@ COPY config.json.tpl /docker-entrypoint.d/config.json.tpl
 
 WORKDIR /app
 
+EXPOSE 8080
+
 STOPSIGNAL SIGTERM
 
 ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
